@@ -1,0 +1,14 @@
+<div class="col-3">
+	<div class="card">
+		<img src="{{ p.mainPicture }}" class="card-img-top" alt="..."/>
+		<div class="card-body">
+			<h5 class="card-title">
+				<a href="{{ path('product_view', {'slug': p.slug}) }}">{{p.name}}</a>
+			</h5>
+			<p class="card-text">
+				{{p.price}}
+				€
+			</p>
+		</div>
+	</div>
+</div>

@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
                     ->setSlug(strtolower($this->slugger->slug($product->getName())))
                     ->setCategory($category)
                     ->setDescription($faker->paragraph())
-                    ->setMainPicture($faker->imageUrl(400, 400, true));
+                    ->setMainPicture($faker->imageUrl(800, 800, true));
 
                 $products[] = $product;
 

@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			width: 95%;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-1"></div>
+				<div class="col-md-2 dropdown">
+					<a href="" data-mdb-toggle="dropdown" aria-expanded="false">
+						<h6>COLLECTION
+							<i class="fas fa-angle-down"></i>
+						</h6>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li>
+							<a class="dropdown-item" href="#">Action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Another action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<a href="" data-mdb-toggle="dropdown" aria-expanded="false">
+						<h6>TAILLE
+							<i class="fas fa-angle-down"></i>
+						</h6>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li>
+							<a class="dropdown-item" href="#">Action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Another action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<a href="" data-mdb-toggle="dropdown" aria-expanded="false">
+						<h6>MATIERE
+							<i class="fas fa-angle-down"></i>
+						</h6>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li>
+							<a class="dropdown-item" href="#">Action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Another action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<a href="" data-mdb-toggle="dropdown" aria-expanded="false">
+						<h6>COULEUR
+							<i class="fas fa-angle-down"></i>
+						</h6>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li>
+							<a class="dropdown-item" href="#">Action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Another action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-2">
+					<a href="" data-mdb-toggle="dropdown" aria-expanded="false">
+						<h6>SUGGESTION
+							<i class="fas fa-angle-down"></i>
+						</h6>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li>
+							<a class="dropdown-item" href="#">Action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Another action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				{% for p in products %}
+					{% include "shared/_product_card.html.twig" with {'p' : p } %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
