@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{# {% form_theme formView 'bootstrap_5_layout.html.twig' %} #}
+
+{% block title %}Création produit
+{% endblock %}
+
+{% block navbar %}
+	{% include "shared/_navbar.html.twig" with {'mode':'light'} %}
+{% endblock %}
+
+{% block carousel %}{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>NOUVEAU PRODUIT</h1>
+
+				{{ form_start(formView) }}
+
+				<div class="row">
+					<div class="col">
+						{{ form_errors(formView.name) }}
+						{{ form_row(formView.name) }}
+
+						{{ form_errors(formView.price) }}
+						{{ form_row(formView.price) }}
+					</div>
+					<div class="col">
+						{{ form_errors(formView.mainPicture) }}
+						{{ form_row(formView.mainPicture) }}
+
+						{{ form_errors(formView.Description) }}
+						{{ form_row(formView.Description) }}
+
+						{{ form_row(formView.category) }}
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">
+					<i class="fas fa-save"></i>
+					Créer le produit
+				</button>
+
+				{{ form_end(formView) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
