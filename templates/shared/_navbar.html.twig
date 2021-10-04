@@ -33,29 +33,47 @@
 				</li>
 			</ul>
 
-			<ul
-				class="navbar-nav d-flex flex-row">
-				<!-- Icons -->
-				<li class="nav-item me-3 me-lg-0">
-					<a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow" target="_blank">
-						<i class="fab fa-youtube"></i>
-					</a>
-				</li>
-				<li class="nav-item me-3 me-lg-0">
-					<a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-						<i class="fab fa-facebook-f"></i>
-					</a>
-				</li>
-				<li class="nav-item me-3 me-lg-0">
-					<a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-						<i class="fab fa-twitter"></i>
-					</a>
-				</li>
-				<li class="nav-item me-3 me-lg-0">
-					<a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-						<i class="fab fa-github"></i>
-					</a>
-				</li>
+			<ul class="navbar-nav d-flex flex-row">
+				{% if app.user %}
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="{{ path('cart_show') }}">
+							<span>
+								<i class="fas fa-shopping-cart"></i>
+								{{ cartService.total | amount }}</span>
+						</a>
+					</li>
+					<!-- Avatar -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+							<img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22" alt="" loading="lazy"/>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="{{ path('purchase_list') }}">Mes commandes</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Paramètres</a>
+							</li>
+							<hr>
+							<li>
+								<a class="dropdown-item btn btn-danger text-center" href="{{ path('security_logout') }}">Logout</a>
+							</li>
+						</ul>
+					</li>
+					<!-- Avatar End -->
+				{% else %}
+					<!-- Icons -->
+					<li class="nav-item me-3 me-lg-0">
+						<a class="nav-link" href="#">
+							Inscription
+						</a>
+					</li>
+					<li class="nav-item me-3 me-lg-0">
+						<a class="btn btn-success" href="{{ path('security_login') }}">
+							Connexion
+						</a>
+					</li>
+				{% endif %}
 			</ul>
 		</div>
 	</div>

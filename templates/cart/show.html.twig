@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Panier
+{% endblock %}
+
+{% block carousel %}{% endblock %}
+
+{% block body %}
+	<div class="container" style="padding:5% 0%;">
+		<div class="row">
+			<h1>Votre panier</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				{% if items | length > 0 %}
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Produit</th>
+								<th>Prix</th>
+								<th>Quantité</th>
+								<th>Total</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for item in items %}
+								<tr>
+									<td>{{ item.product.name }}</td>
+									<td>{{ item.product.price }}</td>
+									<td>
+										<a href="{{ path('cart_remove', {'id':item.product.id}) }}" class="btn btn-sm btn-danger">
+											<i class="fas fa-minus"></i>
+										</a>
+										{{ item.qty }}
+										<a href="{{ path('cart_add', {'id':item.product.id}) }}" class="btn btn-sm btn-success">
+											<i class="fas fa-plus"></i>
+										</a>
+									</td>
+									<td>{{ item.total }}</td>
+									<td>
+										<a href="{{ path('cart_delete', {'id':item.product.id}) }}" class="btn btn-sm btn-danger">
+											<i class="fas fa-trash"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-5">
+							<h3>Total :</h3>
+						</div>
+						<div class="col-md-3">
+							<h3 class="text-right">{{ total | amount }}</h3>
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						{% if app.user %}
+							<h4 class="text-center">Confirmer votre commande en remplissant votre formulaire</h2>
+
+							{{ form_start(confirmationForm, {'action': path('purchase_confirm')}) }}
+
+							{# {{ form_widget(confirmationForm) }} #}
+
+							<div class="form-outline mb-3">
+								{{ form_widget(confirmationForm.fullName) }}
+								<label class="form-label" for="formControlLg">Nom & Prénom</label>
+							</div>
+
+							<div class="form-outline mb-3">
+								{{ form_widget(confirmationForm.address) }}
+								<label class="form-label" for="formControlLg">Adresse de livraison</label>
+							</div>
+
+							<div class="form-outline mb-3">
+								{{ form_widget(confirmationForm.postalCode) }}
+								<label class="form-label" for="formControlLg">Code postale</label>
+							</div>
+
+							<div class="form-outline mb-3">
+								{{ form_widget(confirmationForm.city) }}
+								<label class="form-label" for="formControlLg">Ville</label>
+							</div>
+
+							<div class="text-center">
+								<button class="btn btn-success" type="submit">Paiement</button>
+							</div>
+
+							{{ form_end(confirmationForm) }}
+
+						{% else %}
+							<h5 class="text-center">Connectez-vous pour confirmer votre commande</h2>
+							<a href="{{ path('security_login') }}" class="btn btn-success">Me connecter</a>
+							<h6 class="text-center">ou</h6>
+							<a href="{{ path('security_login') }}" class="btn btn-dark">Me connecter</a>
+						{% endif %}
+					</div>
+				</div>
+
+			{% else %}
+				<h2>Le panier est vide</h2>
+			{% endif %}
+		</div>
+	</div>
+
+
+{% endblock %}

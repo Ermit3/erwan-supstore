@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
-    #[Route('/{slug}', name: 'category_view')]
+    #[Route('/{slug}', name: 'category_view', priority: -1)]
     public function category($slug, CategoryRepository $categoryRepository): Response
     {
         $category = $categoryRepository->findOneBy([
@@ -17,7 +17,6 @@ class CategoryController extends AbstractController
         ]);
 
         return $this->render('category/category_view.html.twig', [
-            'controller_name' => 'CategoryController',
             'products' => $category->getProducts(),
         ]);
     }

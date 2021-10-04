@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductController extends AbstractController
 {
-    #[Route('/{category_slug}/{slug}', name: 'product_view')]
+    #[Route('/{category_slug}/{slug}', name: 'product_view', priority: -1)]
     public function index($slug, ProductRepository $productRepository): Response
     {
         $product = $productRepository->findOneBy([
