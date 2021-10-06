@@ -28,7 +28,7 @@ class Product
     private $name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Le prix ne doit pas etre vide.")
      */
     private $price;

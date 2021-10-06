@@ -3,7 +3,7 @@
 		<img src="{{ p.mainPicture }}" class="card-img-top" alt="..."/>
 		<div class="card-body">
 			<h5 class="card-title">
-				<a href="{{ path('product_view', {'category_slug': p.category.slug,'slug': p.slug}) }}">{{p.name}}</a>
+				<a class=" text-black" href="{{ path('product_view', {'category_slug': p.category.slug,'slug': p.slug}) }}">{{p.name}}</a>
 			</h5>
 			<p class="card-text">
 				{{p.price}}

@@ -8,15 +8,16 @@
 
 {% block body %}
 	<div class="container" style="padding:5% 0%;">
-		<div class="row">
+		<div class="row text-center">
 			<h1>Votre panier</h1>
 		</div>
 		<div class="row">
-			<div class="col-md-8">
-				{% if items | length > 0 %}
+			{% if items | length > 0 %}
+				<div class="col-md-8">
 					<table class="table">
 						<thead>
 							<tr>
+								<th></th>
 								<th>Produit</th>
 								<th>Prix</th>
 								<th>Quantité</th>
@@ -27,6 +28,7 @@
 						<tbody>
 							{% for item in items %}
 								<tr>
+									<td><img src="{{ item.product.mainPicture }}" alt="100" style="width:50px"></td>
 									<td>{{ item.product.name }}</td>
 									<td>{{ item.product.price }}</td>
 									<td>
@@ -101,12 +103,10 @@
 						{% endif %}
 					</div>
 				</div>
-
-			{% else %}
-				<h2>Le panier est vide</h2>
-			{% endif %}
+			</div>
 		</div>
-	</div>
 
-
-{% endblock %}
+	{% else %}
+		<h2 class="text-center">Le panier est vide</h2>
+	{% endif %}
+</div>{% endblock %}

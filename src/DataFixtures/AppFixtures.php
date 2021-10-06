@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Product;
+use Liior\Faker\Prices;
 use App\Entity\Category;
 use App\Entity\Purchase;
 use App\Entity\PurchaseItem;
@@ -30,6 +31,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+        $faker->addProvider(new \Liior\Faker\Prices($faker));
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
         $faker->addProvider(new \Bluemmb\Faker\PicsumPhotosProvider($faker));
 
@@ -73,7 +75,7 @@ class AppFixtures extends Fixture
                 $product = new Product;
 
                 $product->setName($faker->productName())
-                    ->setPrice($faker->randomFloat($nbMaxDecimals = 2, $min = 20, $max = 500))
+                    ->setPrice($faker->price(4000, 20000))
                     ->setSlug(strtolower($this->slugger->slug($product->getName())))
                     ->setCategory($category)
                     ->setDescription($faker->paragraph())
